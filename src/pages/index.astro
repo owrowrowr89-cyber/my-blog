@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_SUBTITLE } from '../consts';
 import mascotImg from '../assets/mascot.png';
 
-const base = '/my-blog';
+const base = '';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),

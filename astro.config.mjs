@@ -6,8 +6,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://owrowrowr89-cyber.github.io/my-blog',
-	base: '/my-blog',
+	site: 'https://k-itfit.netlify.app',
+	base: '/',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
