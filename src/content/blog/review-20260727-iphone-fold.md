@@ -1,7 +1,7 @@
 ---
 title: '아이폼 폴드(아이폰 울트라) 출시 정보 총정리🔥 7.8인치, 200만원대, 9월 공개 예상'
 description: '애플 최초의 폴더블 아이폰 "아이폰 울트라" 2026년 9월 출시 예상. 7.8인치 내부 디스플레이, A20 칩, 200만원대 가격까지 핵심 루머 총정리'
-pubDate: 'Jul 27 2026'
+pubDate: 'Jul 31 2026'
 heroImage: '../../assets/iphone-fold-hero.jpg'
 tags: ['아이폰 폴드', '아이폰 울트라', '애플', '폴더블']
 status: 'approved'

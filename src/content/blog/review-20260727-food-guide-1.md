@@ -1,7 +1,7 @@
 ---
 title: 'K로컬잇슐랭가이드 1편🍽️ 가평 현리맛집 왕십리 불곱창 - 내돈내산 후기'
 description: '가평 현리 현지인 인정 곱창 맛집 왕십리불곱창. 중학교 때부터 일주일에 한 번 가던 곳! 야채곱창, 알곱창 메뉴와 가격, 주차 꿀팁까지 솔직 후기'
-pubDate: 'Jul 27 2026'
+pubDate: 'Aug 01 2026'
 heroImage: '../../assets/food-guide-hero.jpg'
 tags: ['잇슐랭가이드', '가평현리맛집', '왕십리불곱창', '현리곱창', '야채곱창']
 status: 'approved'

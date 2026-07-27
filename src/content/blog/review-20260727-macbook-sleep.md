@@ -1,7 +1,7 @@
 ---
 title: '맥북 잠자기시 깨어나기 커널패닉 해결💻 터미널 설정 3번 말고 25번을 써야 하는 이유'
 description: '맥북 잠자기 후 깨어날 때 커널패닉(재시동) 해결 방법. hibernatemode 0 vs 25 차이점과 터미널 설정법, NVRAM/SMC 초기화까지 총정리'
-pubDate: 'Jul 27 2026'
+pubDate: 'Aug 01 2026'
 heroImage: '../../assets/macbook-hero.jpg'
 tags: ['맥북', '커널패닉', '잠자기', '맥북 튜닝', '터미널']
 status: 'approved'

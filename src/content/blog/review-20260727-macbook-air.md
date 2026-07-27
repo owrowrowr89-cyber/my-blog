@@ -1,7 +1,7 @@
 ---
 title: '맥북 에어 중고 추천🔥 M1 vs M2, 2026년 가성비 최강은?'
 description: '2026년 중고 맥북 에어 M1 vs M2 가격/성능 비교. 50~80만원이면 맥 생태계 입문 가능! 실사용 후기와 구매 팁 정리'
-pubDate: 'Jul 27 2026'
+pubDate: 'Jul 31 2026'
 heroImage: '../../assets/macbook-hero.jpg'
 tags: ['맥북 에어', 'M1', 'M2', '중고 맥북', '가성비']
 status: 'approved'

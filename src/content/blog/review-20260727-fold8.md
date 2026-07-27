@@ -1,7 +1,7 @@
 ---
 title: '갤럭시 Z 폴드8 사전구매 가이드🔥 256GB→512GB 공짜, 워치 반값 할인 총정리'
 description: '삼성 갤럭시 Z 폴드8 / 폴드8 울트라 / Z 플립8 사전구매 혜택 총정리. 더블 스토리지, 워치 반값, 쿠팡 캐시 200만원까지 놓치지 마세요!'
-pubDate: 'Jul 27 2026'
+pubDate: 'Jul 30 2026'
 heroImage: '../../assets/galaxy-fold-hero.jpg'
 tags: ['갤럭시 Z 폴드8', '삼성', '사전구매', '스마트폰 할인']
 status: 'approved'
