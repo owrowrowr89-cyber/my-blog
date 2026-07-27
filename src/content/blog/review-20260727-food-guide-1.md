@@ -2,7 +2,7 @@
 title: 'K로컬잇슐랭가이드 1편🍽️ 가평 하면 현리! 그리고 현리 왕십리불곱창 맛집'
 description: 'K로컬잇슐랭가이드 첫 번째 이야기. 경기 가평군 현리 대표 맛집 두 곳 소개. 가평 닭갈비 본가와 현리 왕십리불곱창의 실제 메뉴와 가격!'
 pubDate: 'Jul 27 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: '../../assets/food-guide-hero.jpg'
 tags: ['잇슐랭가이드', '가평', '현리', '왕십리불곱창', '맛집']
 status: 'approved'
 ---
