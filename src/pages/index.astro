@@ -28,7 +28,7 @@ const recentPosts = posts.slice(0, 6);
 				<div class="hero-content">
 					<div class="hero-text">
 						<h1>{SITE_SUBTITLE}</h1>
-						<p>IT 기기부터 맛집, 자동차, 뷰티까지<br/>K잇핏이 솔직하게 알려드려요 🪄</p>
+						<p>IT 기기부터 맛집, 건강, 교육까지<br/>K잇핏이 솔직하게 알려드려요 🪄</p>
 						<a href={`${base}/blog`} class="btn">전체 글 보러가기 →</a>
 					</div>
 					<div class="hero-mascot">
@@ -69,6 +69,33 @@ const recentPosts = posts.slice(0, 6);
 							</article>
 						))
 					}
+				</div>
+			</section>
+
+			<!-- 카테고리 -->
+			<section class="categories">
+				<h2>🏷️ 카테고리</h2>
+				<div class="cat-grid">
+					<a href={`${base}/blog`} class="cat-card">
+						<span class="cat-icon">💻</span>
+						<span class="cat-name">IT 기기</span>
+					</a>
+					<a href={`${base}/blog`} class="cat-card">
+						<span class="cat-icon">🎧</span>
+						<span class="cat-name">디지털 가전</span>
+					</a>
+					<a href={`${base}/blog`} class="cat-card">
+						<span class="cat-icon">🍽️</span>
+						<span class="cat-name">K로컬잇슐랭</span>
+					</a>
+					<a href={`${base}/blog`} class="cat-card">
+						<span class="cat-icon">💊</span>
+						<span class="cat-name">건강/의학</span>
+					</a>
+					<a href={`${base}/blog`} class="cat-card">
+						<span class="cat-icon">📚</span>
+						<span class="cat-name">교육</span>
+					</a>
 				</div>
 			</section>
 
@@ -221,6 +248,44 @@ const recentPosts = posts.slice(0, 6);
 	.post-date {
 		font-size: 0.75em;
 		color: rgb(var(--gray));
+	}
+
+	/* Categories */
+	.categories {
+		margin: 2em 0;
+	}
+	.categories h2 {
+		color: var(--primary-dark);
+		margin-bottom: 1em;
+		font-size: 1.2em;
+	}
+	.cat-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.8em;
+	}
+	.cat-card {
+		background: white;
+		border-radius: 12px;
+		padding: 1em;
+		text-align: center;
+		box-shadow: var(--card-shadow);
+		border: 1px solid var(--accent-light);
+		text-decoration: none;
+		transition: transform 0.2s;
+	}
+	.cat-card:hover {
+		transform: translateY(-2px);
+	}
+	.cat-icon {
+		font-size: 1.5em;
+		display: block;
+		margin-bottom: 0.2em;
+	}
+	.cat-name {
+		font-size: 0.8em;
+		font-weight: 600;
+		color: rgb(var(--gray-dark));
 	}
 
 	/* About Card */
