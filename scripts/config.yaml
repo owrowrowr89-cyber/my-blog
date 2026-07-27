@@ -1,0 +1,41 @@
+# 블로그 자동화 파이프라인 설정
+blog:
+  name: "잇픽"
+  site_url: "https://owrowrowr89-cyber.github.io/my-blog"
+  language: "ko"
+  
+github:
+  repo_path: "/Users/owrm2/projects/my-blog"
+  branch: "main"
+  content_dir: "src/content/blog"
+
+ai:
+  provider: "deepseek"      # deepseek | openai
+  model: "deepseek-chat"    # 사용 모델
+  temperature: 0.7
+  max_tokens: 4096
+
+publishing:
+  posts_per_day: 2          # 하루 최대 발행량
+  optimal_hour: 10          # 발행 최적 시간 (한국 시간)
+  min_interval_minutes: 120  # 발행 간격
+
+content:
+  min_words: 1500           # 최소 글자 수
+  max_words: 4000           # 최대 글자 수
+  include_toc: true         # 목차 포함
+  include_comparison_table: true  # 비교표 포함
+  include_pros_cons: true   # 장단점 포함
+
+seo:
+  auto_meta_description: true
+  auto_slug: true
+  auto_tags: true
+  max_tags: 5
+
+quality:
+  min_originality_score: 70  # 저작권 검증 최소 점수 (100점 만점)
+  max_similarity_ratio: 0.3  # 최대 유사도 허용 비율
+  require_pain_points: true   # 구매 고통점 분석 포함
+  require_social_proof: true  # 사회 증명 요소 포함
+  has_human_reviewed: false   # 사람 검수 필요 (안전장치)

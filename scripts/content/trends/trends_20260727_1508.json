@@ -1,0 +1,367 @@
+{
+  "date": "2026-07-27T15:08:17.702743",
+  "topics": [
+    {
+      "keyword": "맥북 추천",
+      "category": "애플",
+      "source": "trends",
+      "score": 100,
+      "description": "'맥북' 관련 인기 검색어",
+      "related_products": [
+        "맥북"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702545"
+    },
+    {
+      "keyword": "버즈 추천",
+      "category": "삼성",
+      "source": "trends",
+      "score": 100,
+      "description": "'버즈' 관련 인기 검색어",
+      "related_products": [
+        "버즈"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702559"
+    },
+    {
+      "keyword": "지포스 추천",
+      "category": "엔비디아",
+      "source": "trends",
+      "score": 100,
+      "description": "'지포스' 관련 인기 검색어",
+      "related_products": [
+        "지포스"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702562"
+    },
+    {
+      "keyword": "맥북 M4 프로",
+      "category": "애플",
+      "source": "company_news",
+      "score": 100,
+      "description": "애플 최신 이슈: 맥북 M4 프로",
+      "related_products": [
+        "맥북"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702632"
+    },
+    {
+      "keyword": "엔비디아 AI 칩",
+      "category": "엔비디아",
+      "source": "company_news",
+      "score": 100,
+      "description": "엔비디아 최신 이슈: 엔비디아 AI 칩",
+      "related_products": [
+        "엔비디아"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702645"
+    },
+    {
+      "keyword": "RTX 추천",
+      "category": "엔비디아",
+      "source": "trends",
+      "score": 98,
+      "description": "'RTX' 관련 인기 검색어",
+      "related_products": [
+        "RTX"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702565"
+    },
+    {
+      "keyword": "AI 칩 추천",
+      "category": "엔비디아",
+      "source": "trends",
+      "score": 98,
+      "description": "'AI 칩' 관련 인기 검색어",
+      "related_products": [
+        "AI 칩"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702568"
+    },
+    {
+      "keyword": "아이폰 추천",
+      "category": "애플",
+      "source": "trends",
+      "score": 96,
+      "description": "'아이폰' 관련 인기 검색어",
+      "related_products": [
+        "아이폰"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702532"
+    },
+    {
+      "keyword": "갤럭시북 추천",
+      "category": "삼성",
+      "source": "trends",
+      "score": 94,
+      "description": "'갤럭시북' 관련 인기 검색어",
+      "related_products": [
+        "갤럭시북"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702556"
+    },
+    {
+      "keyword": "에어팟 추천",
+      "category": "애플",
+      "source": "trends",
+      "score": 93,
+      "description": "'에어팟' 관련 인기 검색어",
+      "related_products": [
+        "에어팟"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702549"
+    },
+    {
+      "keyword": "갤럭시 추천",
+      "category": "삼성",
+      "source": "trends",
+      "score": 93,
+      "description": "'갤럭시' 관련 인기 검색어",
+      "related_products": [
+        "갤럭시"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702553"
+    },
+    {
+      "keyword": "아이폰 17 출시",
+      "category": "애플",
+      "source": "company_news",
+      "score": 90,
+      "description": "애플 최신 이슈: 아이폰 17 출시",
+      "related_products": [
+        "아이폰"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702629"
+    },
+    {
+      "keyword": "기아 추천",
+      "category": "현대기아",
+      "source": "trends",
+      "score": 85,
+      "description": "'기아' 관련 인기 검색어",
+      "related_products": [
+        "기아"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702583"
+    },
+    {
+      "keyword": "아이오닉 추천",
+      "category": "현대기아",
+      "source": "trends",
+      "score": 85,
+      "description": "'아이오닉' 관련 인기 검색어",
+      "related_products": [
+        "아이오닉"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702585"
+    },
+    {
+      "keyword": "테슬라 추천",
+      "category": "테슬라",
+      "source": "trends",
+      "score": 83,
+      "description": "'테슬라' 관련 인기 검색어",
+      "related_products": [
+        "테슬라"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702571"
+    },
+    {
+      "keyword": "AI 추천",
+      "category": "AI",
+      "source": "trends",
+      "score": 83,
+      "description": "'AI' 관련 인기 검색어",
+      "related_products": [
+        "AI"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702597"
+    },
+    {
+      "keyword": "스마트워치 추천",
+      "category": "패션",
+      "source": "trends",
+      "score": 81,
+      "description": "'스마트워치' 관련 인기 검색어",
+      "related_products": [
+        "스마트워치"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702617"
+    },
+    {
+      "keyword": "피부관리기 추천",
+      "category": "뷰티",
+      "source": "trends",
+      "score": 79,
+      "description": "'피부관리기' 관련 인기 검색어",
+      "related_products": [
+        "피부관리기"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702611"
+    },
+    {
+      "keyword": "뷰티테크 추천",
+      "category": "뷰티",
+      "source": "trends",
+      "score": 78,
+      "description": "'뷰티테크' 관련 인기 검색어",
+      "related_products": [
+        "뷰티테크"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702608"
+    },
+    {
+      "keyword": "스마트링 추천",
+      "category": "패션",
+      "source": "trends",
+      "score": 78,
+      "description": "'스마트링' 관련 인기 검색어",
+      "related_products": [
+        "스마트링"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702614"
+    },
+    {
+      "keyword": "전기차 추천",
+      "category": "테슬라",
+      "source": "trends",
+      "score": 75,
+      "description": "'전기차' 관련 인기 검색어",
+      "related_products": [
+        "전기차"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702574"
+    },
+    {
+      "keyword": "모델Y 추천",
+      "category": "테슬라",
+      "source": "trends",
+      "score": 75,
+      "description": "'모델Y' 관련 인기 검색어",
+      "related_products": [
+        "모델Y"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702577"
+    },
+    {
+      "keyword": "메타 추천",
+      "category": "메타",
+      "source": "trends",
+      "score": 75,
+      "description": "'메타' 관련 인기 검색어",
+      "related_products": [
+        "메타"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702588"
+    },
+    {
+      "keyword": "퀘스트 추천",
+      "category": "메타",
+      "source": "trends",
+      "score": 75,
+      "description": "'퀘스트' 관련 인기 검색어",
+      "related_products": [
+        "퀘스트"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702594"
+    },
+    {
+      "keyword": "챗봇 추천",
+      "category": "AI",
+      "source": "trends",
+      "score": 73,
+      "description": "'챗봇' 관련 인기 검색어",
+      "related_products": [
+        "챗봇"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702599"
+    },
+    {
+      "keyword": "갤럭시 Z 폴드 7",
+      "category": "삼성",
+      "source": "company_news",
+      "score": 73,
+      "description": "삼성 최신 이슈: 갤럭시 Z 폴드 7",
+      "related_products": [
+        "갤럭시"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702635"
+    },
+    {
+      "keyword": "갤럭시 링 2",
+      "category": "삼성",
+      "source": "company_news",
+      "score": 73,
+      "description": "삼성 최신 이슈: 갤럭시 링 2",
+      "related_products": [
+        "갤럭시"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702638"
+    },
+    {
+      "keyword": "미용기기 추천",
+      "category": "뷰티",
+      "source": "trends",
+      "score": 71,
+      "description": "'미용기기' 관련 인기 검색어",
+      "related_products": [
+        "미용기기"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702605"
+    },
+    {
+      "keyword": "RTX 5090",
+      "category": "엔비디아",
+      "source": "company_news",
+      "score": 70,
+      "description": "엔비디아 최신 이슈: RTX 5090",
+      "related_products": [
+        "RTX"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702642"
+    },
+    {
+      "keyword": "오큘러스 추천",
+      "category": "메타",
+      "source": "trends",
+      "score": 66,
+      "description": "'오큘러스' 관련 인기 검색어",
+      "related_products": [
+        "오큘러스"
+      ],
+      "trend_direction": "hot",
+      "discovered_at": "2026-07-27T15:08:17.702591"
+    }
+  ],
+  "total_found": 30,
+  "summary": "이번 주 핫 토픽:\n  • 애플: 4개\n  • 엔비디아: 4개\n  • 삼성: 2개\n\nTOP 3 키워드:\n  1. 맥북 추천 (점수: 100)\n  2. 버즈 추천 (점수: 100)\n  3. 지포스 추천 (점수: 100)"
+}
