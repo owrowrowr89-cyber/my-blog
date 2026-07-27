@@ -1,16 +1,112 @@
 ---
-title: 'First post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
-heroImage: '../../assets/blog-placeholder-3.jpg'
+title: '2025년 가성비 노트북 TOP 5 비교 추천'
+description: '50만원부터 150만원까지, 가격대별 최고의 노트북을 비교 분석했습니다. 학생, 직장인, 크리에이터까지 모두를 위한 추천 리스트'
+pubDate: 'Jul 27 2026'
+heroImage: '../../assets/blog-placeholder-1.jpg'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+노트북을 고를 때 가장 중요한 건 **가격 대비 성능**, 즉 가성비입니다. 하지만 수많은 제품 중에서 어떤 게 진짜 가성비인지 알기 어렵죠.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+이 글에서는 2025년 현재 구매할 수 있는 가성비 노트북을 가격대별로 정리했습니다.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+## 💻 50~80만원대 (가성비 입문)
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+### 1위: 레노버 아이디어패드 슬림 5
+- **CPU**: 라이젠 7 8845HS
+- **RAM/SSD**: 16GB / 512GB
+- **디스플레이**: 15.6형 FHD IPS
+- **배터리**: 최대 10시간
+- **가격**: 약 69만원
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+> **추천 대상**: 대학생, 사무용, 간단한 영상 편집
+
+**장점**: 가격 대비 성비 최고 수준이고, AMD CPU의 내장 그래픽이 생각보다 강력해서 가벼운 게임도 가능합니다.
+
+**단점**: 디스플레이 밝기가 300니트로 야외 사용은 무리입니다.
+
+---
+
+## 💰 80~120만원대 (메인스트림)
+
+### 2위: 맥북 에어 M4
+- **CPU**: Apple M4
+- **RAM/SSD**: 16GB / 256GB
+- **디스플레이**: 13.6형 Liquid Retina
+- **배터리**: 최대 18시간
+- **가격**: 약 119만원
+
+> **추천 대상**: 아이폰 유저, 문서 작업 중심, 장시간 배터리 필요
+
+**장점**: 배터리가 진짜 하루 종일 가고, M4 칩의 성능이 인텔/AMD를 압도합니다. 빌드 퀄리티도 최고.
+
+**단점**: 저장공간 256GB는 부족할 수 있고, 윈도우 전용 프로그램이 필요하면 불편합니다.
+
+### 3위: ASUS 비보북 S 16 OLED
+- **CPU**: 코어 울트라 7
+- **RAM/SSD**: 16GB / 512GB
+- **디스플레이**: 16형 OLED 3.2K
+- **배터리**: 최대 12시간
+- **가격**: 약 109만원
+
+> **추천 대상**: 영상 감독, 사진 작가, 디자인 작업
+
+**장점**: OLED 디스플레이가 정말 환상적입니다. 영상 편집이나 사진 작업에 최고.
+
+**단점**: OLED 특성상 번인 걱정을 할 수 있고, 고성능 작업시 발열이 있습니다.
+
+---
+
+## 💎 120~150만원대 (프리미엄)
+
+### 4위: LG 그램 16
+- **CPU**: 코어 울트라 7
+- **RAM/SSD**: 16GB / 512GB
+- **디스플레이**: 16형 WQXGA IPS
+- **무게**: 1.19kg
+- **배터리**: 최대 15시간
+- **가격**: 약 139만원
+
+> **추천 대상**: 이동 많은 직장인, 대학원생, 가벼운 노트북 원함
+
+**장점**: 16형임에도 1.19kg은 정말 놀랍습니다. 하루 종일 들고 다녀도 부담이 없어요.
+
+**단점**: 가격이 좀 나가고, 고성능 작업보다는 휴대성에 초점이 맞춰져 있습니다.
+
+### 5위: 갤럭시 북4 프로
+- **CPU**: 코어 울트라 9
+- **RAM/SSD**: 16GB / 512GB
+- **디스플레이**: 16형 3K AMOLED
+- **배터리**: 최대 13시간
+- **가격**: 약 149만원
+
+> **추천 대상**: 갤럭시 유저, 삼성 생태계 사용자
+
+**장점**: 갤럭시 탭이나 폰과의 연동이 환상적입니다. AMOLED 화면도 훌륭합니다.
+
+**단점**: 윈도우 ARM 버전의 호환성 이슈가 아직 있습니다.
+
+---
+
+## 📊 최종 비교표
+
+| 제품 | 가격 | CPU | RAM | 디스플레이 | 배터리 |
+|------|------|-----|-----|-----------|--------|
+| 아이디어패드 슬림 5 | 69만 | R7 8845HS | 16GB | FHD IPS | 10h |
+| 맥북 에어 M4 | 119만 | M4 | 16GB | Liquid Retina | 18h |
+| 비보북 S 16 OLED | 109만 | Ultra 7 | 16GB | 3.2K OLED | 12h |
+| LG 그램 16 | 139만 | Ultra 7 | 16GB | WQXGA IPS | 15h |
+| 갤럭시 북4 프로 | 149만 | Ultra 9 | 16GB | 3K AMOLED | 13h |
+
+---
+
+## 🏆 내 상황별 추천
+
+| 상황 | 추천 제품 |
+|------|-----------|
+| 🎓 **대학생 (예산 적음)** | **레노버 아이디어패드 슬림 5** — 69만원 |
+| 💼 **직장인 (휴대성 중요)** | **LG 그램 16** — 1.19kg |
+| 🎬 **영상 편집/디자인** | **비보북 S 16 OLED** — OLED 화면 |
+| 🍎 **애플 생태계** | **맥북 에어 M4** — 완벽한 연동 |
+| 📱 **삼성 갤럭시 유저** | **갤럭시 북4 프로** — 삼성 연동 |
+
+이 글이 노트북 선택에 도움이 되셨길 바랍니다. 궁금한 점은 댓글로 남겨주세요!

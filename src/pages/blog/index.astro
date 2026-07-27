@@ -13,102 +13,100 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
+		<BaseHead title={`전체 글 - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<h1>📋 전체 글</h1>
+			<p class="subtitle">총 {posts.length}개의 포스트가 있습니다.</p>
+			<div class="post-list">
+				{
+					posts.map((post) => (
+						<article class="post-row">
+							<a href={`/blog/${post.id}/`} class="post-row-link">
+								<div class="post-row-body">
+									<h2>{post.data.title}</h2>
+									<p class="post-row-desc">{post.data.description}</p>
+									<div class="post-row-meta">
+										<span class="post-row-date">
+											{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+										</span>
+									</div>
+								</div>
+								{post.data.heroImage && (
+									<Image width={200} height={130} src={post.data.heroImage} alt="" class="post-row-img" />
+								)}
+							</a>
+						</article>
+					))
+				}
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	.subtitle {
+		color: rgb(var(--gray));
+		margin-bottom: 2em;
+	}
+	.post-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+	.post-row {
+		background: white;
+		border-radius: 12px;
+		border: 1px solid rgb(var(--gray-light));
+		transition: box-shadow 0.2s;
+	}
+	.post-row:hover {
+		box-shadow: var(--card-shadow);
+	}
+	.post-row-link {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.2em 1.5em;
+		text-decoration: none;
+		color: inherit;
+		gap: 1.5em;
+	}
+	.post-row-body {
+		flex: 1;
+	}
+	.post-row-body h2 {
+		font-size: 1.2em;
+		margin: 0 0 0.3em;
+		color: rgb(var(--black));
+	}
+	.post-row-desc {
+		font-size: 0.9em;
+		color: rgb(var(--gray));
+		margin: 0 0 0.5em;
+	}
+	.post-row-meta {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+	.post-row-date {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+	}
+	.post-row-img {
+		width: 200px;
+		height: 130px;
+		object-fit: cover;
+		border-radius: 8px;
+		flex-shrink: 0;
+	}
+	@media (max-width: 720px) {
+		.post-row-img { display: none; }
+		.post-row-link { padding: 1em; }
+	}
+</style>

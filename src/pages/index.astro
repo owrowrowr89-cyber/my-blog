@@ -1,49 +1,193 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_SUBTITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const latestPost = posts[0];
+const recentPosts = posts.slice(0, 4);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- 히어로 섹션 -->
+			<section class="hero">
+				<h1>{SITE_SUBTITLE}</h1>
+				<p>IT 기기부터 생활 가전까지, 똑똑한 소비를 위한 솔직한 비교 리뷰를 제공합니다.</p>
+				<a href="/blog" class="btn">📋 전체 글 보기</a>
+			</section>
+
+			<!-- 최신 포스트 -->
+			<section class="featured">
+				<h2>🆕 최신 포스트</h2>
+				<div class="post-grid">
+					{
+						recentPosts.map((post) => (
+							<article class="post-card card">
+								<a href={`/blog/${post.id}/`}>
+									{post.data.heroImage && (
+										<Image width={720} height={360} src={post.data.heroImage} alt="" class="post-image" />
+									)}
+									<div class="post-body">
+										<h3>{post.data.title}</h3>
+										<p class="post-desc">{post.data.description}</p>
+										<span class="post-date">{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+									</div>
+								</a>
+							</article>
+						))
+					}
+				</div>
+				<div class="more-posts">
+					<a href="/blog" class="btn">모든 글 보기 →</a>
+				</div>
+			</section>
+
+			<!-- 카테고리 섹션 -->
+			<section class="categories">
+				<h2>🏷️ 카테고리</h2>
+				<div class="cat-grid">
+					<a href="/blog" class="cat-card">
+						<span class="cat-icon">💻</span>
+						<span class="cat-name">IT 기기</span>
+						<span class="cat-desc">노트북, 태블릿, 스마트폰</span>
+					</a>
+					<a href="/blog" class="cat-card">
+						<span class="cat-icon">🎧</span>
+						<span class="cat-name">디지털 가전</span>
+						<span class="cat-desc">이어폰, 스피커, 웨어러블</span>
+					</a>
+					<a href="/blog" class="cat-card">
+						<span class="cat-icon">🏠</span>
+						<span class="cat-name">생활 가전</span>
+						<span class="cat-desc">청소기, 공기청정기, 정수기</span>
+					</a>
+					<a href="/blog" class="cat-card">
+						<span class="cat-icon">💰</span>
+						<span class="cat-name">가성비 추천</span>
+						<span class="cat-desc">가격별 TOP 추천 리스트</span>
+					</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero {
+		text-align: center;
+		padding: 3em 0;
+	}
+	.hero h1 {
+		font-size: 2.8em;
+		margin-bottom: 0.5em;
+		background: linear-gradient(135deg, #2563eb, #7c3aed);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+	.hero p {
+		font-size: 1.2em;
+		color: rgb(var(--gray));
+		max-width: 600px;
+		margin: 0 auto 2em;
+	}
+
+	.featured {
+		margin-top: 3em;
+	}
+	.featured h2 {
+		margin-bottom: 1em;
+	}
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5em;
+	}
+	.post-card a {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
+	.post-image {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		border-radius: 12px;
+		margin-bottom: 1em;
+	}
+	.post-body h3 {
+		font-size: 1.2em;
+		margin: 0 0 0.3em;
+		color: rgb(var(--black));
+	}
+	.post-desc {
+		font-size: 0.9em;
+		color: rgb(var(--gray));
+		margin: 0 0 0.5em;
+	}
+	.post-date {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+	}
+	.more-posts {
+		text-align: center;
+		margin-top: 2em;
+	}
+
+	.categories {
+		margin: 4em 0;
+	}
+	.cat-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1em;
+	}
+	.cat-card {
+		background: white;
+		border-radius: 16px;
+		padding: 1.5em;
+		text-align: center;
+		box-shadow: var(--card-shadow);
+		border: 1px solid rgb(var(--gray-light));
+		text-decoration: none;
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.cat-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 16px rgba(var(--gray), 20%);
+	}
+	.cat-icon {
+		font-size: 2em;
+		display: block;
+		margin-bottom: 0.3em;
+	}
+	.cat-name {
+		display: block;
+		font-weight: 700;
+		color: rgb(var(--black));
+		margin-bottom: 0.3em;
+	}
+	.cat-desc {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+	}
+
+	@media (max-width: 720px) {
+		.hero h1 { font-size: 1.8em; }
+		.post-grid { grid-template-columns: 1fr; }
+		.cat-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+</style>
