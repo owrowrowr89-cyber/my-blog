@@ -534,11 +534,17 @@ class ContentPipeline:
         )
     
     def _make_slug(self, title: str) -> str:
-        """제목 → URL 슬러그 변환"""
+        """제목 → 영문 URL 슬러그 변환 (한글 제거)"""
+        # 한글/특수문자 제거, 영문+숫자+하이픈만 남김
         slug = title.lower()
-        slug = re.sub(r'[^a-z0-9가-힣\s-]', '', slug)
+        slug = re.sub(r'[^a-z0-9\s-]', '', slug)  # 한글 및 특수문자 제거
         slug = re.sub(r'[\s]+', '-', slug.strip())
         slug = re.sub(r'-+', '-', slug)
+        slug = slug.strip('-')
+        # 너무 짧으면 prefix 추가
+        if len(slug) < 10:
+            from datetime import datetime
+            slug = f"review-{datetime.now().strftime('%Y%m%d')}-{slug}"
         return slug[:80]
     
     def _save_draft(self, post: GeneratedPost):
