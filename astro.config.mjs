@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://k-itfit.netlify.app',
+	site: 'https://timely-halva-d3b754.netlify.app',
 	base: '/',
 	integrations: [mdx(), sitemap()],
 	fonts: [
