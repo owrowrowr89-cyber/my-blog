@@ -4,51 +4,73 @@ const today = new Date();
 
 <footer>
 	<div class="footer-inner">
-		<div class="footer-info">
-			<p class="footer-title">K잇핏</p>
-			<p>IT/디지털 제품 비교 리뷰 블로그</p>
+		<div class="footer-top">
+			<div class="footer-brand">
+				<p class="footer-logo">🪄 K잇핏</p>
+				<p class="footer-desc">똑똑한 소비를 위한 모든 것</p>
+			</div>
+			<div class="footer-links">
+				<a href="/">홈</a>
+				<a href="/blog">전체 글</a>
+				<a href="/about">소개</a>
+			</div>
 		</div>
-		<div class="footer-links">
-			<a href="/">홈</a>
-			<a href="/blog">전체 글</a>
-			<a href="/about">소개</a>
+		<div class="footer-bottom">
+			<p>&copy; {today.getFullYear()} K잇핏. All rights reserved.</p>
 		</div>
-		<p class="copyright">&copy; {today.getFullYear()} 잇픽. All rights reserved.</p>
 	</div>
 </footer>
 <style>
 	footer {
-		border-top: 1px solid rgb(var(--gray-light));
-		background: white;
-		padding: 3em 1em;
-		color: rgb(var(--gray));
-		text-align: center;
+		background: var(--primary-dark);
+		color: rgba(255,255,255,0.7);
+		padding: 3em 1.5em 2em;
 	}
 	.footer-inner {
 		max-width: 960px;
 		margin: 0 auto;
 	}
-	.footer-title {
+	.footer-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding-bottom: 2em;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+	}
+	.footer-logo {
 		font-weight: 800;
 		font-size: 1.1em;
-		color: rgb(var(--black));
-		margin-bottom: 0.3em;
+		color: white;
+		margin: 0 0 0.3em;
+	}
+	.footer-desc {
+		font-size: 0.85em;
+		margin: 0;
+		color: rgba(255,255,255,0.5);
 	}
 	.footer-links {
 		display: flex;
-		justify-content: center;
 		gap: 1.5em;
-		margin: 1em 0;
 	}
 	.footer-links a {
-		color: rgb(var(--gray));
+		color: rgba(255,255,255,0.6);
+		font-size: 0.9em;
 		text-decoration: none;
 	}
 	.footer-links a:hover {
-		color: var(--accent);
+		color: white;
+		opacity: 1;
 	}
-	.copyright {
+	.footer-bottom {
+		padding-top: 1.5em;
+		text-align: center;
+	}
+	.footer-bottom p {
 		font-size: 0.8em;
-		margin: 1em 0 0;
+		margin: 0;
+		color: rgba(255,255,255,0.35);
+	}
+	@media (max-width: 720px) {
+		.footer-top { flex-direction: column; gap: 1em; }
 	}
 </style>

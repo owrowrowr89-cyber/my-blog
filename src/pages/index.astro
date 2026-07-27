@@ -5,13 +5,14 @@ import BaseHead from '../components/BaseHead.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_SUBTITLE } from '../consts';
+import mascotImg from '../assets/mascot.png';
 
 const base = '/my-blog';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const recentPosts = posts.slice(0, 4);
+const recentPosts = posts.slice(0, 6);
 ---
 
 <!doctype html>
@@ -22,68 +23,64 @@ const recentPosts = posts.slice(0, 4);
 	<body>
 		<Header />
 		<main>
-			<!-- 히어로 섹션 -->
+			<!-- 히어로 - K잇핏 캐릭터 + 소개 -->
 			<section class="hero">
-				<h1>{SITE_SUBTITLE}</h1>
-				<p>IT 기기부터 생활 가전까지, 똑똑한 소비를 위한 솔직한 비교 리뷰를 제공합니다.</p>
-				<a href={`${base}/blog`} class="btn">📋 전체 글 보기</a>
+				<div class="hero-content">
+					<div class="hero-text">
+						<h1>{SITE_SUBTITLE}</h1>
+						<p>IT 기기부터 맛집, 자동차, 뷰티까지<br/>K잇핏이 솔직하게 알려드려요 🪄</p>
+						<a href={`${base}/blog`} class="btn">전체 글 보러가기 →</a>
+					</div>
+					<div class="hero-mascot">
+						<Image src={mascotImg} alt="K잇핏 캐릭터" class="mascot-img" />
+					</div>
+				</div>
 			</section>
 
 			<!-- 최신 포스트 -->
 			<section class="featured">
-				<h2>🆕 최신 포스트</h2>
+				<div class="section-header">
+					<h2>📋 최신 글</h2>
+					<a href={`${base}/blog`} class="btn btn-outline">모두 보기 →</a>
+				</div>
 				<div class="post-grid">
 					{
 						recentPosts.map((post) => (
-							<article class="post-card card">
+							<article class="post-card">
 								<a href={`${base}/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" class="post-image" />
-									)}
+									<div class="post-img-wrap">
+										{post.data.heroImage ? (
+											<Image width={600} height={340} src={post.data.heroImage} alt="" class="post-img" />
+										) : (
+											<div class="post-img-placeholder">📝</div>
+										)}
+									</div>
 									<div class="post-body">
+										<span class="tag">
+											{post.data.tags?.[0] || '리뷰'}
+										</span>
 										<h3>{post.data.title}</h3>
 										<p class="post-desc">{post.data.description}</p>
-										<span class="post-date">{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+										<span class="post-date">
+											{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+										</span>
 									</div>
 								</a>
 							</article>
 						))
 					}
 				</div>
-				<div class="more-posts">
-					<a href={`${base}/blog`} class="btn">모든 글 보기 →</a>
-				</div>
 			</section>
 
-			<!-- 카테고리 섹션 -->
-			<section class="categories">
-				<h2>🏷️ 카테고리</h2>
-				<div class="cat-grid">
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">💻</span>
-						<span class="cat-name">IT 기기</span>
-						<span class="cat-desc">노트북, 태블릿, 스마트폰</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">🎧</span>
-						<span class="cat-name">디지털 가전</span>
-						<span class="cat-desc">이어폰, 스피커, 웨어러블</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">🏠</span>
-						<span class="cat-name">생활 가전</span>
-						<span class="cat-desc">청소기, 공기청정기, 정수기</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">💰</span>
-						<span class="cat-name">가성비 추천</span>
-						<span class="cat-desc">가격별 TOP 추천 리스트</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">🍽️</span>
-						<span class="cat-name">K로컬잇슐랭가이드</span>
-						<span class="cat-desc">한국 지역 맛집 & 로컬 맛집</span>
-					</a>
+			<!-- 캐릭터 소개 -->
+			<section class="about-card">
+				<div class="about-inner">
+					<Image src={mascotImg} alt="K잇핏" class="about-mascot" />
+					<div class="about-text">
+						<h2>🪄 안녕하세요, K잇핏입니다</h2>
+						<p>똑똑한 소비를 위해 IT부터 맛집, 자동차, 뷰티까지 가리지 않고 솔직하게 리뷰해요. 광고성 정보는 No, 실제 경험담은 Yes!</p>
+						<a href={`${base}/about`} class="btn btn-outline">더 알아보기 →</a>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -92,108 +89,179 @@ const recentPosts = posts.slice(0, 4);
 </html>
 
 <style>
+	/* Hero */
 	.hero {
-		text-align: center;
-		padding: 3em 0;
+		padding: 3em 0 2em;
 	}
-	.hero h1 {
-		font-size: 2.8em;
-		margin-bottom: 0.5em;
-		background: linear-gradient(135deg, #2563eb, #7c3aed);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+	.hero-content {
+		display: flex;
+		align-items: center;
+		gap: 3em;
 	}
-	.hero p {
-		font-size: 1.2em;
+	.hero-text {
+		flex: 1;
+	}
+	.hero-text h1 {
+		font-size: 2.4em;
+		margin-bottom: 0.4em;
+		color: var(--primary-dark);
+		line-height: 1.2;
+	}
+	.hero-text p {
+		font-size: 1.1em;
 		color: rgb(var(--gray));
-		max-width: 600px;
-		margin: 0 auto 2em;
+		margin-bottom: 1.5em;
+		line-height: 1.6;
+	}
+	.hero-mascot {
+		flex-shrink: 0;
+		width: 200px;
+		height: 200px;
+	}
+	.mascot-img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 	}
 
+	/* Featured Section */
 	.featured {
-		margin-top: 3em;
+		margin: 1em 0 3em;
 	}
-	.featured h2 {
-		margin-bottom: 1em;
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5em;
+	}
+	.section-header h2 {
+		margin: 0;
+		color: var(--primary-dark);
 	}
 	.post-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1.5em;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.2em;
+	}
+	.post-card {
+		background: white;
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: var(--card-shadow);
+		border: 1px solid var(--accent-light);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.post-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 8%);
 	}
 	.post-card a {
 		text-decoration: none;
 		color: inherit;
-		display: block;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
-	.post-image {
+	.post-card a:hover { opacity: 1; }
+	.post-img-wrap {
 		width: 100%;
-		height: 200px;
+		height: 170px;
+		overflow: hidden;
+	}
+	.post-img {
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
-		border-radius: 12px;
-		margin-bottom: 1em;
+		border-radius: 0;
+		transition: transform 0.3s;
+	}
+	.post-card:hover .post-img {
+		transform: scale(1.05);
+	}
+	.post-img-placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 3em;
+		background: var(--accent-light);
+	}
+	.post-body {
+		padding: 1em 1.2em 1.2em;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4em;
+		flex: 1;
 	}
 	.post-body h3 {
-		font-size: 1.2em;
-		margin: 0 0 0.3em;
+		font-size: 0.95em;
+		margin: 0;
 		color: rgb(var(--black));
+		line-height: 1.4;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 	.post-desc {
-		font-size: 0.9em;
+		font-size: 0.8em;
 		color: rgb(var(--gray));
-		margin: 0 0 0.5em;
+		margin: 0;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		flex: 1;
 	}
 	.post-date {
-		font-size: 0.8em;
+		font-size: 0.75em;
 		color: rgb(var(--gray));
-	}
-	.more-posts {
-		text-align: center;
-		margin-top: 2em;
 	}
 
-	.categories {
-		margin: 4em 0;
+	/* About Card */
+	.about-card {
+		background: var(--primary);
+		border-radius: 20px;
+		padding: 2em;
+		margin: 2em 0;
 	}
-	.cat-grid {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		gap: 1em;
+	.about-inner {
+		display: flex;
+		align-items: center;
+		gap: 2em;
 	}
-	.cat-card {
+	.about-mascot {
+		width: 120px;
+		height: 120px;
+		object-fit: contain;
+		flex-shrink: 0;
+	}
+	.about-text h2 {
+		color: white;
+		margin: 0 0 0.5em;
+	}
+	.about-text p {
+		color: rgba(255,255,255,0.85);
+		font-size: 0.9em;
+		margin: 0 0 1em;
+		line-height: 1.6;
+	}
+	.about-text .btn-outline {
+		color: white;
+		border-color: rgba(255,255,255,0.5);
+	}
+	.about-text .btn-outline:hover {
 		background: white;
-		border-radius: 16px;
-		padding: 1.5em;
-		text-align: center;
-		box-shadow: var(--card-shadow);
-		border: 1px solid rgb(var(--gray-light));
-		text-decoration: none;
-		transition: transform 0.2s, box-shadow 0.2s;
-	}
-	.cat-card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 16px rgba(var(--gray), 20%);
-	}
-	.cat-icon {
-		font-size: 2em;
-		display: block;
-		margin-bottom: 0.3em;
-	}
-	.cat-name {
-		display: block;
-		font-weight: 700;
-		color: rgb(var(--black));
-		margin-bottom: 0.3em;
-	}
-	.cat-desc {
-		font-size: 0.8em;
-		color: rgb(var(--gray));
+		color: var(--primary);
+		border-color: white;
 	}
 
 	@media (max-width: 720px) {
-		.hero h1 { font-size: 1.8em; }
+		.hero-content { flex-direction: column; text-align: center; gap: 1.5em; }
+		.hero-text h1 { font-size: 1.6em; }
+		.hero-mascot { width: 140px; height: 140px; }
 		.post-grid { grid-template-columns: 1fr; }
-		.cat-grid { grid-template-columns: repeat(2, 1fr); }
+		.about-inner { flex-direction: column; text-align: center; }
 	}
 </style>

@@ -3,60 +3,70 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <header>
-	<nav>
-		<a href="/" class="logo">{SITE_TITLE}</a>
-		<div class="nav-links">
+	<div class="header-top">
+		<a href="/" class="logo">
+			<span class="logo-icon">🪄</span>
+			<span class="logo-text">{SITE_TITLE}</span>
+		</a>
+		<nav>
 			<a href="/" class="nav-link">홈</a>
 			<a href="/blog" class="nav-link">전체 글</a>
 			<a href="/about" class="nav-link">소개</a>
-		</div>
-	</nav>
+		</nav>
+	</div>
 </header>
 <style>
 	header {
+		background: var(--primary);
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		background: rgba(255, 255, 255, 0.95);
-		backdrop-filter: blur(8px);
-		border-bottom: 1px solid rgb(var(--gray-light));
+		box-shadow: 0 1px 4px rgba(0,0,0,10%);
 	}
-	nav {
+	.header-top {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0 1.5em;
+		height: 56px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: 960px;
-		margin: 0 auto;
-		padding: 0 1em;
-		height: 60px;
 	}
 	.logo {
-		font-weight: 800;
-		font-size: 1.1em;
-		text-decoration: none;
-		color: rgb(var(--black));
-	}
-	.logo:hover {
-		color: var(--accent);
-	}
-	.nav-links {
 		display: flex;
-		gap: 0.5em;
+		align-items: center;
+		gap: 0.3em;
+		text-decoration: none;
+		color: white;
+	}
+	.logo-icon {
+		font-size: 1.4em;
+	}
+	.logo-text {
+		font-weight: 800;
+		font-size: 1.2em;
+		letter-spacing: -0.5px;
+	}
+	.logo:hover { opacity: 1; }
+	nav {
+		display: flex;
+		gap: 0.2em;
 	}
 	.nav-link {
-		padding: 0.5em 1em;
-		border-radius: 8px;
-		color: rgb(var(--gray-dark));
-		text-decoration: none;
-		font-size: 0.9em;
+		padding: 0.4em 1em;
+		border-radius: 20px;
+		color: rgba(255,255,255,0.85);
+		font-size: 0.85em;
 		font-weight: 500;
 		transition: background 0.2s, color 0.2s;
 	}
 	.nav-link:hover {
-		background: rgb(var(--gray-light));
-		color: var(--accent);
+		background: rgba(255,255,255,0.15);
+		color: white;
+		opacity: 1;
 	}
 	@media (max-width: 720px) {
-		nav { height: 52px; }
+		.header-top { height: 48px; padding: 0 1em; }
+		.logo-text { font-size: 1em; }
 	}
 </style>

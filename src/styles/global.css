@@ -1,93 +1,103 @@
 :root {
-	--accent: #2563eb;
-	--accent-dark: #1d4ed8;
-	--accent-light: #dbeafe;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 241, 245, 249;
-	--gray-dark: 30, 41, 59;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--primary: #006241;
+	--primary-dark: #004831;
+	--primary-light: #d4e9e2;
+	--accent: #c2a77d;
+	--accent-light: #f5f0e8;
+	--black: 30, 30, 30;
+	--gray: 120, 120, 120;
+	--gray-light: 245, 242, 237;
+	--gray-dark: 50, 50, 50;
+	--warm-bg: #faf9f7;
 	--box-shadow:
-		0 1px 3px rgba(var(--gray), 20%),
-		0 4px 12px rgba(var(--gray), 15%);
+		0 2px 8px rgba(0, 0, 0, 6%),
+		0 4px 16px rgba(0, 0, 0, 4%);
 	--card-shadow:
-		0 2px 8px rgba(var(--gray), 12%),
-		0 8px 24px rgba(var(--gray), 8%);
+		0 1px 4px rgba(0, 0, 0, 5%),
+		0 8px 24px rgba(0, 0, 0, 4%);
 }
 body {
 	font-family: var(--font-atkinson);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: #f8fafc;
+	background: var(--warm-bg);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 18px;
+	font-size: 17px;
 	line-height: 1.7;
 }
 main {
-	width: 900px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 2em 1em 4em;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 1.5em 4em;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.5rem 0;
 	color: rgb(var(--black));
 	line-height: 1.3;
+	font-weight: 700;
 }
-h1 { font-size: 2.5em; }
-h2 { font-size: 1.8em; }
-h3 { font-size: 1.4em; }
+h1 { font-size: 2em; letter-spacing: -0.5px; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.2em; }
 strong, b { font-weight: 700; }
-a {
-	color: var(--accent);
-	text-decoration: none;
-}
-a:hover {
-	color: var(--accent-dark);
-}
+a { color: var(--primary); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
 p { margin-bottom: 1em; }
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 12px;
-}
+img { max-width: 100%; height: auto; border-radius: 12px; }
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
+	padding: 2px 6px;
+	background: var(--primary-light);
+	color: var(--primary-dark);
 	border-radius: 4px;
-	font-size: 0.9em;
+	font-size: 0.85em;
 }
 pre {
-	padding: 1.5em;
-	border-radius: 8px;
+	padding: 1.2em;
+	background: #1a1a1a;
+	color: #e8e8e8;
+	border-radius: 12px;
 	overflow-x: auto;
 }
 pre > code { all: unset; }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
+	border-left: 3px solid var(--accent);
+	padding: 0.3em 0 0.3em 1.2em;
+	margin: 1.2em 0;
+	color: rgb(var(--gray));
+	font-style: italic;
 }
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
-}
+hr { border: none; height: 1px; background: var(--accent-light); margin: 2em 0; }
 
 .btn {
-	display: inline-block;
-	padding: 0.6em 1.5em;
-	background: var(--accent);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.6em 1.6em;
+	background: var(--primary);
 	color: white;
-	border-radius: 8px;
+	border-radius: 50px;
 	font-weight: 600;
-	font-size: 0.95em;
-	transition: background 0.2s;
+	font-size: 0.9em;
+	border: none;
+	cursor: pointer;
+	transition: background 0.2s, transform 0.1s;
 }
 .btn:hover {
-	background: var(--accent-dark);
+	background: var(--primary-dark);
+	color: white;
+	opacity: 1;
+	transform: translateY(-1px);
+}
+.btn-outline {
+	background: transparent;
+	color: var(--primary);
+	border: 1.5px solid var(--primary);
+}
+.btn-outline:hover {
+	background: var(--primary);
 	color: white;
 }
 
@@ -96,35 +106,34 @@ hr {
 	border-radius: 16px;
 	padding: 1.5em;
 	box-shadow: var(--card-shadow);
-	border: 1px solid rgb(var(--gray-light));
+	border: 1px solid rgba(var(--gray-light), 0.8);
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 8%);
 }
 
 .tag {
 	display: inline-block;
-	padding: 0.2em 0.7em;
-	background: var(--accent-light);
-	color: var(--accent-dark);
+	padding: 0.2em 0.8em;
+	background: var(--primary-light);
+	color: var(--primary-dark);
 	border-radius: 20px;
-	font-size: 0.8em;
+	font-size: 0.75em;
 	font-weight: 600;
 }
 
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
+	border: 0; padding: 0; margin: 0;
 	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	clip: rect(1px 1px 1px 1px);
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
+	height: 1px; width: 1px; overflow: hidden;
+	clip: rect(1px 1px 1px 1px); clip-path: inset(50%);
 	white-space: nowrap;
 }
 
 @media (max-width: 720px) {
-	body { font-size: 16px; }
-	main { padding: 1em; }
-	h1 { font-size: 1.8em; }
+	body { font-size: 15px; }
+	main { padding: 0 1em 3em; }
+	h1 { font-size: 1.5em; }
 }

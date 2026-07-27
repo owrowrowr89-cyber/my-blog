@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import mascotImg from '../assets/mascot.png';
 ---
 
 <!doctype html>
@@ -13,47 +15,143 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<article class="about card">
-				<h1>안녕하세요 👋</h1>
+			<article class="about-content">
+				<div class="about-hero">
+					<Image src={mascotImg} alt="K잇핏" class="about-mascot" />
+					<div>
+						<h1>🪄 안녕하세요, K잇핏입니다</h1>
+						<p class="about-tagline">똑똑한 소비를 위한 모든 것</p>
+					</div>
+				</div>
 
-				<p>K잇핏은 IT 기기와 디지털 가전 제품을 <strong>솔직하게 비교하고 추천</strong>하는 블로그입니다.</p>
-
-				<p>신제품이 쏟아지는 시대, 어떤 걸 골라야 할지 고민되시죠?<br/>
-				저도 똑같은 고민을 했습니다. 그래서 직접 비교하고, 분석하고, 정리해서 공유합니다.</p>
+				<div class="about-card-item">
+					<p>K잇핏은 <strong>똑똑한 소비</strong>를 돕기 위해 만들어졌어요. IT 기기부터 맛집, 자동차, 뷰티, 생활용품까지 카테고리 가리지 않고 솔직하게 알려드려요.</p>
+					<p>광고성 정보는 No, 실제 경험과 솔직한 비교는 Yes!</p>
+				</div>
 
 				<h2>이 블로그에서 볼 수 있는 것</h2>
-				<ul>
-					<li><strong>제품 비교 리뷰</strong> — 노트북, 스마트폰, 태블릿, 이어폰 등</li>
-					<li><strong>가성비 추천</strong> — 예산별 최고의 선택</li>
-					<li><strong>구매 가이드</strong> — 초보자를 위한 친절한 설명</li>
-					<li><strong>IT 꿀팁</strong> — 일상에 도움되는 디지털 정보</li>
-				</ul>
+				<div class="feature-grid">
+					<div class="feature-item">
+						<span class="feature-icon">💻</span>
+						<h3>IT 기기 리뷰</h3>
+						<p>노트북, 스마트폰, 태블릿 등</p>
+					</div>
+					<div class="feature-item">
+						<span class="feature-icon">🍽️</span>
+						<h3>K로컬잇슐랭가이드</h3>
+						<p>전국 맛집 탐방</p>
+					</div>
+					<div class="feature-item">
+						<span class="feature-icon">🚗</span>
+						<h3>자동차 & 테크</h3>
+						<p>신차 정보, IT 트렌드</p>
+					</div>
+					<div class="feature-item">
+						<span class="feature-icon">💰</span>
+						<h3>가성비 추천</h3>
+						<p>예산별 최고의 선택</p>
+					</div>
+				</div>
 
-				<h2>문의</h2>
-				<p>제품 협찬, 리뷰 문의, 기타 연락은 아래 메일로 부탁드립니다.</p>
-				<p><a href="mailto:contact@itpick.kr">contact@itpick.kr</a></p>
+				<div class="about-card-item contact-card">
+					<h2>📬 문의</h2>
+					<p>제품 협찬, 리뷰 문의, 기타 연락은 아래 메일로 부탁드립니다.</p>
+					<p><a href="mailto:contact@kitfit.kr">contact@k-itfit.kr</a></p>
+				</div>
 			</article>
 		</main>
 		<Footer />
 	</body>
 </html>
 <style>
-	.about {
+	.about-content {
 		max-width: 680px;
-		margin: 2em auto;
+		margin: 0 auto;
+		padding: 2em 0;
 	}
-	.about h1 {
+	.about-hero {
+		display: flex;
+		align-items: center;
+		gap: 2em;
+		background: var(--primary);
+		border-radius: 20px;
+		padding: 2em;
+		margin-bottom: 2em;
+	}
+	.about-mascot {
+		width: 120px;
+		height: 120px;
+		object-fit: contain;
+		flex-shrink: 0;
+	}
+	.about-hero h1 {
+		color: white;
+		margin: 0 0 0.3em;
+		font-size: 1.5em;
+	}
+	.about-tagline {
+		color: rgba(255,255,255,0.7);
+		margin: 0;
+		font-size: 0.95em;
+	}
+	.about-card-item {
+		background: white;
+		border-radius: 16px;
+		padding: 1.5em;
+		margin-bottom: 1.5em;
+		box-shadow: var(--card-shadow);
+		border: 1px solid var(--accent-light);
+	}
+	.about-card-item p {
+		margin: 0 0 0.8em;
+		color: rgb(var(--gray-dark));
+		font-size: 0.95em;
+		line-height: 1.7;
+	}
+	.about-card-item p:last-child { margin: 0; }
+	.about-content h2 {
+		color: var(--primary-dark);
+		font-size: 1.2em;
+		margin: 1.5em 0 1em;
+	}
+	.feature-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1em;
+		margin-bottom: 1.5em;
+	}
+	.feature-item {
+		background: white;
+		border-radius: 16px;
+		padding: 1.5em;
+		box-shadow: var(--card-shadow);
+		border: 1px solid var(--accent-light);
+		text-align: center;
+	}
+	.feature-icon {
 		font-size: 2em;
-		margin-bottom: 1em;
+		display: block;
+		margin-bottom: 0.3em;
 	}
-	.about h2 {
-		margin: 1.5em 0 0.5em;
-		font-size: 1.3em;
+	.feature-item h3 {
+		font-size: 1em;
+		margin: 0 0 0.3em;
+		color: rgb(var(--black));
 	}
-	.about ul {
-		padding-left: 1.2em;
+	.feature-item p {
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+		margin: 0;
 	}
-	.about ul li {
-		margin-bottom: 0.5em;
+	.contact-card {
+		background: var(--primary-light);
+		border: none;
+	}
+	.contact-card a {
+		color: var(--primary-dark);
+		font-weight: 600;
+	}
+	@media (max-width: 720px) {
+		.about-hero { flex-direction: column; text-align: center; }
 	}
 </style>
