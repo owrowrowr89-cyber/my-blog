@@ -79,6 +79,11 @@ const recentPosts = posts.slice(0, 4);
 						<span class="cat-name">가성비 추천</span>
 						<span class="cat-desc">가격별 TOP 추천 리스트</span>
 					</a>
+					<a href={`${base}/blog`} class="cat-card">
+						<span class="cat-icon">🍽️</span>
+						<span class="cat-name">K로컬잇슐랭가이드</span>
+						<span class="cat-desc">한국 지역 맛집 & 로컬 맛집</span>
+					</a>
 				</div>
 			</section>
 		</main>
@@ -153,7 +158,7 @@ const recentPosts = posts.slice(0, 4);
 	}
 	.cat-grid {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		gap: 1em;
 	}
 	.cat-card {
