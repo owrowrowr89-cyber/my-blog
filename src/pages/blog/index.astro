@@ -7,6 +7,8 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
+const base = '/my-blog';
+
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
@@ -26,7 +28,7 @@ const posts = (await getCollection('blog')).sort(
 				{
 					posts.map((post) => (
 						<article class="post-row">
-							<a href={`/blog/${post.id}/`} class="post-row-link">
+							<a href={`${base}/blog/${post.id}/`} class="post-row-link">
 								<div class="post-row-body">
 									<h2>{post.data.title}</h2>
 									<p class="post-row-desc">{post.data.description}</p>
