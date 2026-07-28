@@ -3,16 +3,20 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <header>
-	<div class="header-top">
+	<div class="header-inner">
 		<a href="/" class="logo">
 			<span class="logo-icon">🪄</span>
 			<span class="logo-text">{SITE_TITLE}</span>
 		</a>
-		<nav>
-			<a href="/" class="nav-link">홈</a>
-			<a href="/blog" class="nav-link">전체 글</a>
-			<a href="/about" class="nav-link">소개</a>
+		<nav class="main-nav">
+			<a href="/" class="nav-link">🏠 홈</a>
+			<a href="/blog" class="nav-link">📋 전체 글</a>
+			<a href="/category/it" class="nav-link">💻 IT기기</a>
+			<a href="/category/food" class="nav-link">🍽️ 맛집</a>
+			<a href="/category/health" class="nav-link">💊 건강</a>
+			<a href="/category/edu" class="nav-link">📚 교육</a>
 		</nav>
+		<button class="menu-toggle" id="menuToggle">☰</button>
 	</div>
 </header>
 <style>
@@ -21,13 +25,13 @@ import { SITE_TITLE } from '../consts';
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		box-shadow: 0 1px 4px rgba(0,0,0,10%);
+		box-shadow: 0 2px 8px rgba(0,0,0,12%);
 	}
-	.header-top {
-		max-width: 960px;
+	.header-inner {
+		max-width: 1100px;
 		margin: 0 auto;
 		padding: 0 1.5em;
-		height: 56px;
+		height: 60px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -35,29 +39,31 @@ import { SITE_TITLE } from '../consts';
 	.logo {
 		display: flex;
 		align-items: center;
-		gap: 0.3em;
+		gap: 0.4em;
 		text-decoration: none;
 		color: white;
+		flex-shrink: 0;
 	}
-	.logo-icon {
-		font-size: 1.4em;
-	}
+	.logo-icon { font-size: 1.5em; }
 	.logo-text {
 		font-weight: 800;
-		font-size: 1.2em;
+		font-size: 1.3em;
 		letter-spacing: -0.5px;
 	}
 	.logo:hover { opacity: 1; }
-	nav {
+	.main-nav {
 		display: flex;
-		gap: 0.2em;
+		gap: 0.3em;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 	.nav-link {
-		padding: 0.4em 1em;
+		padding: 0.4em 0.9em;
 		border-radius: 20px;
 		color: rgba(255,255,255,0.85);
 		font-size: 0.85em;
 		font-weight: 500;
+		white-space: nowrap;
 		transition: background 0.2s, color 0.2s;
 	}
 	.nav-link:hover {
@@ -65,8 +71,32 @@ import { SITE_TITLE } from '../consts';
 		color: white;
 		opacity: 1;
 	}
+	.menu-toggle {
+		display: none;
+		background: none;
+		border: none;
+		color: white;
+		font-size: 1.4em;
+		cursor: pointer;
+		padding: 0.3em;
+	}
 	@media (max-width: 720px) {
-		.header-top { height: 48px; padding: 0 1em; }
+		.header-inner { height: 50px; padding: 0 1em; }
 		.logo-text { font-size: 1em; }
+		.main-nav { display: none; }
+		.menu-toggle { display: block; }
 	}
 </style>
+<script>
+	document.getElementById('menuToggle')?.addEventListener('click', () => {
+		const nav = document.querySelector('.main-nav');
+		nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+		nav.style.flexDirection = 'column';
+		nav.style.position = 'absolute';
+		nav.style.top = '50px';
+		nav.style.left = '0';
+		nav.style.right = '0';
+		nav.style.background = 'var(--primary)';
+		nav.style.padding = '0.5em 1em';
+	});
+</script>

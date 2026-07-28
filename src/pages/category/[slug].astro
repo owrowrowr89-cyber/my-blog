@@ -1,0 +1,99 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+export async function getStaticPaths() {
+	const categories = [
+		{ slug: 'it', name: '💻 IT기기', tags: ['에어팟', '아이폰', '갤럭시', '맥북', '테슬라', 'FSD'] },
+		{ slug: 'food', name: '🍽️ K로컬잇슐랭', tags: ['잇슐랭가이드', '맛집', '파주', '곱창', '순대국'] },
+		{ slug: 'health', name: '💊 건강/의학', tags: ['마운자로', '위고비', 'Mounjaro', '체중감량', '비만치료제'] },
+		{ slug: 'edu', name: '📚 교육', tags: ['교육', '초등수학', '교육과정', '학습가이드'] },
+	];
+	return categories.map(cat => ({
+		params: { slug: cat.slug },
+		props: { category: cat },
+	}));
+}
+
+const { category } = Astro.props;
+const base = '';
+const allPosts = await getCollection('blog');
+const filteredPosts = allPosts.filter(post => 
+	category.tags.some(tag => 
+		post.data.tags?.some(pt => pt.toLowerCase().includes(tag.toLowerCase()))
+	)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead title={`${category.name} - ${SITE_TITLE}`} description={`${category.name} 관련 글 모음`} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<h1>{category.name}</h1>
+				<p class="subtitle">총 {filteredPosts.length}개의 포스트</p>
+			</div>
+
+			{filteredPosts.length === 0 ? (
+				<div class="empty">
+					<p>아직 이 카테고리의 글이 없습니다.</p>
+				</div>
+			) : (
+				<div class="post-list">
+					{filteredPosts.map((post) => (
+						<article class="post-row card">
+							<a href={`${base}/blog/${post.id}/`} class="post-row-link">
+								<div class="post-row-img-wrap">
+									{post.data.heroImage ? (
+										<Image width={240} height={160} src={post.data.heroImage} alt="" class="post-row-img" />
+									) : (
+										<div class="post-row-img-placeholder">📝</div>
+									)}
+								</div>
+								<div class="post-row-body">
+									<span class="tag">{post.data.tags?.[0] || '리뷰'}</span>
+									<h2>{post.data.title}</h2>
+									<p class="post-row-desc">{post.data.description}</p>
+									<span class="post-row-date">
+										{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+									</span>
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
+<style>
+	.page-header { padding: 2em 0 1em; }
+	.page-header h1 { color: var(--primary-dark); margin: 0 0 0.2em; font-size: 1.6em; }
+	.subtitle { color: rgb(var(--gray)); margin: 0; font-size: 0.9em; }
+	.post-list { display: flex; flex-direction: column; gap: 1em; }
+	.post-row { padding: 0; overflow: hidden; }
+	.post-row-link { display: flex; text-decoration: none; color: inherit; }
+	.post-row-link:hover { opacity: 1; }
+	.post-row-img-wrap { width: 240px; min-height: 160px; flex-shrink: 0; overflow: hidden; }
+	.post-row-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; transition: transform 0.3s; }
+	.post-row:hover .post-row-img { transform: scale(1.05); }
+	.post-row-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3em; background: var(--accent-light); }
+	.post-row-body { padding: 1.2em 1.5em; display: flex; flex-direction: column; gap: 0.4em; flex: 1; }
+	.post-row-body h2 { font-size: 1.05em; margin: 0; color: rgb(var(--black)); }
+	.post-row-desc { font-size: 0.85em; color: rgb(var(--gray)); margin: 0; flex: 1; }
+	.post-row-date { font-size: 0.8em; color: rgb(var(--gray)); }
+	.empty { text-align: center; padding: 3em; color: rgb(var(--gray)); }
+	@media (max-width: 720px) {
+		.post-row-link { flex-direction: column; }
+		.post-row-img-wrap { width: 100%; height: 180px; }
+	}
+</style>

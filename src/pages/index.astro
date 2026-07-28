@@ -13,6 +13,13 @@ const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const recentPosts = posts.slice(0, 6);
+
+const categoryPosts = {
+	it: posts.filter(p => p.data.tags?.some(t => ['에어팟','아이폰','갤럭시','맥북','테슬라'].some(kt => t.toLowerCase().includes(kt.toLowerCase())))).slice(0, 3),
+	food: posts.filter(p => p.data.tags?.some(t => t.includes('잇슐랭') || t.includes('맛집') || t.includes('곱창'))).slice(0, 3),
+	health: posts.filter(p => p.data.tags?.some(t => ['마운자로','위고비','Mounjaro','체중감량'].some(kt => t.toLowerCase().includes(kt.toLowerCase())))).slice(0, 3),
+	edu: posts.filter(p => p.data.tags?.some(t => ['교육','초등','수학','학습'].some(kt => t.includes(kt)))).slice(0, 3),
+};
 ---
 
 <!doctype html>
@@ -23,13 +30,16 @@ const recentPosts = posts.slice(0, 6);
 	<body>
 		<Header />
 		<main>
-			<!-- 히어로 - K잇핏 캐릭터 + 소개 -->
+			<!-- 히어로 -->
 			<section class="hero">
 				<div class="hero-content">
 					<div class="hero-text">
 						<h1>{SITE_SUBTITLE}</h1>
 						<p>IT 기기부터 맛집, 건강, 교육까지<br/>K잇핏이 솔직하게 알려드려요 🪄</p>
-						<a href={`${base}/blog`} class="btn">전체 글 보러가기 →</a>
+						<div class="hero-btns">
+							<a href={`${base}/blog`} class="btn">📋 전체 글 보기</a>
+							<a href={`${base}/about`} class="btn btn-outline">🪄 소개</a>
+						</div>
 					</div>
 					<div class="hero-mascot">
 						<Image src={mascotImg} alt="K잇핏 캐릭터" class="mascot-img" />
@@ -37,75 +47,72 @@ const recentPosts = posts.slice(0, 6);
 				</div>
 			</section>
 
-			<!-- 최신 포스트 -->
+			<!-- 최신 글 -->
 			<section class="featured">
 				<div class="section-header">
 					<h2>📋 최신 글</h2>
 					<a href={`${base}/blog`} class="btn btn-outline">모두 보기 →</a>
 				</div>
 				<div class="post-grid">
-					{
-						recentPosts.map((post) => (
-							<article class="post-card">
-								<a href={`${base}/blog/${post.id}/`}>
-									<div class="post-img-wrap">
-										{post.data.heroImage ? (
-											<Image width={600} height={340} src={post.data.heroImage} alt="" class="post-img" />
-										) : (
-											<div class="post-img-placeholder">📝</div>
-										)}
-									</div>
-									<div class="post-body">
-										<span class="tag">
-											{post.data.tags?.[0] || '리뷰'}
-										</span>
-										<h3>{post.data.title}</h3>
-										<p class="post-desc">{post.data.description}</p>
-										<span class="post-date">
-											{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
-										</span>
-									</div>
-								</a>
-							</article>
-						))
-					}
+					{recentPosts.slice(0, 3).map((post) => (
+						<article class="post-card">
+							<a href={`${base}/blog/${post.id}/`}>
+								<div class="post-img-wrap">
+									{post.data.heroImage ? (
+										<Image width={600} height={340} src={post.data.heroImage} alt="" class="post-img" />
+									) : (
+										<div class="post-img-placeholder">📝</div>
+									)}
+								</div>
+								<div class="post-body">
+									<span class="tag">{post.data.tags?.[0] || '리뷰'}</span>
+									<h3>{post.data.title}</h3>
+									<p class="post-desc">{post.data.description}</p>
+									<span class="post-date">{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+								</div>
+							</a>
+						</article>
+					))}
 				</div>
 			</section>
 
-			<!-- 카테고리 -->
-			<section class="categories">
-				<h2>🏷️ 카테고리</h2>
-				<div class="cat-grid">
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">💻</span>
-						<span class="cat-name">IT 기기</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">🎧</span>
-						<span class="cat-name">디지털 가전</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">🍽️</span>
-						<span class="cat-name">K로컬잇슐랭</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">💊</span>
-						<span class="cat-name">건강/의학</span>
-					</a>
-					<a href={`${base}/blog`} class="cat-card">
-						<span class="cat-icon">📚</span>
-						<span class="cat-name">교육</span>
-					</a>
-				</div>
-			</section>
+			<!-- 카테고리별 섹션 -->
+			{Object.entries(categoryPosts).filter(([_, ps]) => ps.length > 0).map(([slug, catPosts]) => {
+				const labels = { it: '💻 IT기기', food: '🍽️ K로컬잇슐랭', health: '💊 건강/의학', edu: '📚 교육' };
+				return (
+					<section class="cat-section">
+						<div class="section-header">
+							<h2>{labels[slug] || slug}</h2>
+							<a href={`${base}/category/${slug}`} class="btn btn-outline">더보기 →</a>
+						</div>
+						<div class="cat-post-row">
+							{catPosts.map((post) => (
+								<article class="cat-post-item">
+									<a href={`${base}/blog/${post.id}/`}>
+										<div class="cat-post-img-wrap">
+											{post.data.heroImage ? (
+												<Image width={300} height={200} src={post.data.heroImage} alt="" class="cat-post-img" />
+											) : (<div class="cat-post-img-placeholder">📝</div>)}
+										</div>
+										<div class="cat-post-info">
+											<h4>{post.data.title}</h4>
+											<span class="post-date">{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+										</div>
+									</a>
+								</article>
+							))}
+						</div>
+					</section>
+				);
+			})}
 
-			<!-- 캐릭터 소개 -->
+			<!-- 소개 -->
 			<section class="about-card">
 				<div class="about-inner">
 					<Image src={mascotImg} alt="K잇핏" class="about-mascot" />
 					<div class="about-text">
 						<h2>🪄 안녕하세요, K잇핏입니다</h2>
-						<p>똑똑한 소비를 위해 IT부터 맛집, 자동차, 뷰티까지 가리지 않고 솔직하게 리뷰해요. 광고성 정보는 No, 실제 경험담은 Yes!</p>
+						<p>똑똑한 소비를 위해 IT부터 맛집, 건강, 교육까지 가리지 않고 솔직하게 리뷰해요.</p>
 						<a href={`${base}/about`} class="btn btn-outline">더 알아보기 →</a>
 					</div>
 				</div>
@@ -114,223 +121,60 @@ const recentPosts = posts.slice(0, 6);
 		<Footer />
 	</body>
 </html>
-
 <style>
-	/* Hero */
-	.hero {
-		padding: 3em 0 2em;
-	}
-	.hero-content {
-		display: flex;
-		align-items: center;
-		gap: 3em;
-	}
-	.hero-text {
-		flex: 1;
-	}
-	.hero-text h1 {
-		font-size: 2.4em;
-		margin-bottom: 0.4em;
-		color: var(--primary-dark);
-		line-height: 1.2;
-	}
-	.hero-text p {
-		font-size: 1.1em;
-		color: rgb(var(--gray));
-		margin-bottom: 1.5em;
-		line-height: 1.6;
-	}
-	.hero-mascot {
-		flex-shrink: 0;
-		width: 200px;
-		height: 200px;
-	}
-	.mascot-img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		border-radius: 50%;
-		border: 3px solid var(--primary);
-		background: white;
-		padding: 4px;
-	}
-
-	/* Featured Section */
-	.featured {
-		margin: 1em 0 3em;
-	}
-	.section-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 1.5em;
-	}
-	.section-header h2 {
-		margin: 0;
-		color: var(--primary-dark);
-	}
-	.post-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.2em;
-	}
-	.post-card {
-		background: white;
-		border-radius: 16px;
-		overflow: hidden;
-		box-shadow: var(--card-shadow);
-		border: 1px solid var(--accent-light);
-		transition: transform 0.2s, box-shadow 0.2s;
-	}
-	.post-card:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 8px 30px rgba(0, 0, 0, 8%);
-	}
-	.post-card a {
-		text-decoration: none;
-		color: inherit;
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-	}
+	.hero { padding: 2.5em 0 2em; }
+	.hero-content { display: flex; align-items: center; gap: 3em; }
+	.hero-text { flex: 1; }
+	.hero-text h1 { font-size: 2.2em; margin-bottom: 0.3em; color: var(--primary-dark); line-height: 1.2; }
+	.hero-text p { font-size: 1.1em; color: rgb(var(--gray)); margin-bottom: 1.5em; line-height: 1.6; }
+	.hero-btns { display: flex; gap: 0.8em; flex-wrap: wrap; }
+	.hero-mascot { flex-shrink: 0; width: 180px; height: 180px; }
+	.mascot-img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; border: 3px solid var(--primary); background: white; padding: 4px; }
+	.featured { margin: 1em 0 2em; }
+	.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2em; }
+	.section-header h2 { margin: 0; color: var(--primary-dark); font-size: 1.3em; }
+	.post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2em; }
+	.post-card { background: white; border-radius: 14px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--accent-light); transition: transform 0.2s; }
+	.post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,8%); }
+	.post-card a { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; }
 	.post-card a:hover { opacity: 1; }
-	.post-img-wrap {
-		width: 100%;
-		height: 170px;
-		overflow: hidden;
-	}
-	.post-img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 0;
-		transition: transform 0.3s;
-	}
-	.post-card:hover .post-img {
-		transform: scale(1.05);
-	}
-	.post-img-placeholder {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 3em;
-		background: var(--accent-light);
-	}
-	.post-body {
-		padding: 1em 1.2em 1.2em;
-		display: flex;
-		flex-direction: column;
-		gap: 0.4em;
-		flex: 1;
-	}
-	.post-body h3 {
-		font-size: 0.95em;
-		margin: 0;
-		color: rgb(var(--black));
-		line-height: 1.4;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-	}
-	.post-desc {
-		font-size: 0.8em;
-		color: rgb(var(--gray));
-		margin: 0;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		flex: 1;
-	}
-	.post-date {
-		font-size: 0.75em;
-		color: rgb(var(--gray));
-	}
+	.post-img-wrap { width: 100%; height: 160px; overflow: hidden; }
+	.post-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; transition: transform 0.3s; }
+	.post-card:hover .post-img { transform: scale(1.05); }
+	.post-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3em; background: var(--accent-light); }
+	.post-body { padding: 0.8em 1em 1em; display: flex; flex-direction: column; gap: 0.3em; flex: 1; }
+	.post-body h3 { font-size: 0.9em; margin: 0; color: rgb(var(--black)); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+	.post-desc { font-size: 0.78em; color: rgb(var(--gray)); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+	.post-date { font-size: 0.73em; color: rgb(var(--gray)); }
 
-	/* Categories */
-	.categories {
-		margin: 2em 0;
-	}
-	.categories h2 {
-		color: var(--primary-dark);
-		margin-bottom: 1em;
-		font-size: 1.2em;
-	}
-	.cat-grid {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		gap: 0.8em;
-	}
-	.cat-card {
-		background: white;
-		border-radius: 12px;
-		padding: 1em;
-		text-align: center;
-		box-shadow: var(--card-shadow);
-		border: 1px solid var(--accent-light);
-		text-decoration: none;
-		transition: transform 0.2s;
-	}
-	.cat-card:hover {
-		transform: translateY(-2px);
-	}
-	.cat-icon {
-		font-size: 1.5em;
-		display: block;
-		margin-bottom: 0.2em;
-	}
-	.cat-name {
-		font-size: 0.8em;
-		font-weight: 600;
-		color: rgb(var(--gray-dark));
-	}
+	/* 카테고리 섹션 */
+	.cat-section { margin: 2em 0; }
+	.cat-post-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; }
+	.cat-post-item { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--accent-light); transition: transform 0.2s; }
+	.cat-post-item:hover { transform: translateY(-2px); }
+	.cat-post-item a { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+	.cat-post-item a:hover { opacity: 1; }
+	.cat-post-img-wrap { width: 100%; height: 140px; overflow: hidden; }
+	.cat-post-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+	.cat-post-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--accent-light); font-size: 2em; }
+	.cat-post-info { padding: 0.7em 0.9em 0.9em; }
+	.cat-post-info h4 { font-size: 0.85em; margin: 0 0 0.3em; color: rgb(var(--black)); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-	/* About Card */
-	.about-card {
-		background: var(--primary);
-		border-radius: 20px;
-		padding: 2em;
-		margin: 2em 0;
-	}
-	.about-inner {
-		display: flex;
-		align-items: center;
-		gap: 2em;
-	}
-	.about-mascot {
-		width: 120px;
-		height: 120px;
-		object-fit: contain;
-		flex-shrink: 0;
-	}
-	.about-text h2 {
-		color: white;
-		margin: 0 0 0.5em;
-	}
-	.about-text p {
-		color: rgba(255,255,255,0.85);
-		font-size: 0.9em;
-		margin: 0 0 1em;
-		line-height: 1.6;
-	}
-	.about-text .btn-outline {
-		color: white;
-		border-color: rgba(255,255,255,0.5);
-	}
-	.about-text .btn-outline:hover {
-		background: white;
-		color: var(--primary);
-		border-color: white;
-	}
+	.about-card { background: var(--primary); border-radius: 20px; padding: 2em; margin: 2em 0; }
+	.about-inner { display: flex; align-items: center; gap: 2em; }
+	.about-mascot { width: 100px; height: 100px; object-fit: contain; flex-shrink: 0; border-radius: 50%; border: 3px solid white; background: rgba(255,255,255,0.2); padding: 3px; }
+	.about-text h2 { color: white; margin: 0 0 0.3em; font-size: 1.2em; }
+	.about-text p { color: rgba(255,255,255,0.85); font-size: 0.9em; margin: 0 0 0.8em; line-height: 1.6; }
+	.about-text .btn-outline { color: white; border-color: rgba(255,255,255,0.5); }
+	.about-text .btn-outline:hover { background: white; color: var(--primary); border-color: white; }
 
 	@media (max-width: 720px) {
 		.hero-content { flex-direction: column; text-align: center; gap: 1.5em; }
-		.hero-text h1 { font-size: 1.6em; }
-		.hero-mascot { width: 140px; height: 140px; }
+		.hero-text h1 { font-size: 1.5em; }
+		.hero-btns { justify-content: center; }
+		.hero-mascot { width: 130px; height: 130px; }
 		.post-grid { grid-template-columns: 1fr; }
+		.cat-post-row { grid-template-columns: 1fr; }
 		.about-inner { flex-direction: column; text-align: center; }
 	}
 </style>

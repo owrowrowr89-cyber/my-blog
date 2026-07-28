@@ -1,5 +1,5 @@
+headersOrigin = "config"
 plugins = []
-headers = []
 redirects = []
 
 [functions]
@@ -8,8 +8,8 @@ redirects = []
 
 [build]
 publish = "/Users/owrm2/projects/my-blog/dist"
-publishOrigin = "ui"
-commandOrigin = "ui"
+publishOrigin = "config"
+commandOrigin = "config"
 command = "npm run build"
 
 [build.environment]
@@ -25,3 +25,9 @@ command = "npm run build"
 [build.processing.js]
 
 [build.services]
+
+[[headers]]
+for = "/robots.txt"
+
+[headers.values]
+Content-Type = "text/plain; charset=utf-8"
