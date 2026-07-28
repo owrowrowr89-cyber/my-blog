@@ -2,12 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# Force robots.txt to be served directly without redirect
-[[redirects]]
-  from = "http://timely-halva-d3b754.netlify.app/robots.txt"
-  to = "https://timely-halva-d3b754.netlify.app/robots.txt"
-  status = 200
-
 [[headers]]
   for = "/robots.txt"
   [headers.values]
