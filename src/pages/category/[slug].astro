@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 export async function getStaticPaths() {
@@ -36,48 +37,55 @@ const filteredPosts = allPosts.filter(post => {
 	<body>
 		<Header />
 		<main>
-			<div class="page-header">
-				<h1>{category.name}</h1>
-				<p class="subtitle">총 {filteredPosts.length}개의 포스트</p>
-			</div>
+			<div class="layout-with-sidebar">
+				<div class="content-area">
+					<div class="page-header">
+						<h1>{category.name}</h1>
+						<p class="subtitle">총 {filteredPosts.length}개의 포스트</p>
+					</div>
 
-			{filteredPosts.length === 0 ? (
-				<div class="empty">
-					<p>아직 이 카테고리의 글이 없습니다.</p>
+					{filteredPosts.length === 0 ? (
+						<div class="empty">
+							<p>아직 이 카테고리의 글이 없습니다.</p>
+						</div>
+					) : (
+						<div class="post-list">
+							{filteredPosts.map((post) => (
+								<article class="post-row card">
+									<a href={`${base}/blog/${post.id}/`} class="post-row-link">
+										<div class="post-row-img-wrap">
+											{post.data.heroImage ? (
+												<Image width={240} height={160} src={post.data.heroImage} alt="" class="post-row-img" />
+											) : (
+												<div class="post-row-img-placeholder">📝</div>
+											)}
+										</div>
+										<div class="post-row-body">
+											<span class="tag">{post.data.tags?.[0] || '리뷰'}</span>
+											<h2>{post.data.title}</h2>
+											<p class="post-row-desc">{post.data.description}</p>
+											<span class="post-row-date">
+												{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+											</span>
+										</div>
+									</a>
+								</article>
+							))}
+						</div>
+					)}
 				</div>
-			) : (
-				<div class="post-list">
-					{filteredPosts.map((post) => (
-						<article class="post-row card">
-							<a href={`${base}/blog/${post.id}/`} class="post-row-link">
-								<div class="post-row-img-wrap">
-									{post.data.heroImage ? (
-										<Image width={240} height={160} src={post.data.heroImage} alt="" class="post-row-img" />
-									) : (
-										<div class="post-row-img-placeholder">📝</div>
-									)}
-								</div>
-								<div class="post-row-body">
-									<span class="tag">{post.data.tags?.[0] || '리뷰'}</span>
-									<h2>{post.data.title}</h2>
-									<p class="post-row-desc">{post.data.description}</p>
-									<span class="post-row-date">
-										{post.data.pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
-									</span>
-								</div>
-							</a>
-						</article>
-					))}
-				</div>
-			)}
+				<Sidebar />
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
 <style>
-	.page-header { padding: 2em 0 1em; }
-	.page-header h1 { color: var(--primary-dark); margin: 0 0 0.2em; font-size: 1.6em; }
-	.subtitle { color: rgb(var(--gray)); margin: 0; font-size: 0.9em; }
+	.layout-with-sidebar { display: flex; gap: 2em; align-items: flex-start; padding: 1.5em 0; }
+	.content-area { flex: 1; min-width: 0; }
+	.page-header { padding: 0 0 1em; }
+	.page-header h1 { color: var(--primary-dark); margin: 0 0 0.2em; font-size: 1.3em; }
+	.subtitle { color: rgb(var(--gray)); margin: 0; font-size: 0.85em; }
 	.post-list { display: flex; flex-direction: column; gap: 1em; }
 	.post-row { padding: 0; overflow: hidden; }
 	.post-row-link { display: flex; text-decoration: none; color: inherit; }
