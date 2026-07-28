@@ -6,7 +6,7 @@ description: '
 혹시 이런 경험 있으신가요?  
 "무선청소기 사려고 검색했는데, 종류도 너무 많고 가격도 천차만별.'
 pubDate: 'Jul 28 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: '../../assets/vacuum-hero.jpg'
 tags: ['가성비 무선청소기 추천', '잇픽']
 status: 'approved'
 reviewNotes: '저작권 점수: 100/100
