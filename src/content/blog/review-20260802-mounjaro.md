@@ -2,7 +2,7 @@
 title: '마운자로 vs 위고비 완벽 비교💉 체중감량 효과, 부작용, 가격 차이'
 description: '비만치료제 마운자로와 위고비의 모든 것. 2만 명 대상 연구 결과: 마운자로 평균 14.7% 감량 vs 위고비 10.8% 감량. 부작용, 가격, 처방 조건 총정리'
 pubDate: 'Aug 02 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: '../../assets/mounjaro-hero.jpg'
 tags: ['마운자로', '위고비', '비만치료제', '체중감량', 'GLP-1']
 status: 'approved'
 ---

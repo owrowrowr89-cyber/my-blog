@@ -2,7 +2,7 @@
 title: '초등 수학교육 과정 완벽 가이드📚 2026 개정 커리큘럼 총정리'
 description: '2026년 초등학교 전학년 수학 교과 과정 완벽 정리. 학년별 학습 내용, 2022 개정교육과정 변경점, 학부모 가이드'
 pubDate: 'Aug 02 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: '../../assets/education-hero.jpg'
 tags: ['초등수학', '교육과정', '2022개정교육과정', '초등교육', '학습가이드']
 status: 'approved'
 ---

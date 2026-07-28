@@ -2,7 +2,7 @@
 title: 'K로컬잇슐랭가이드 2편🍽️ 금촌역 파주순대국 막창순대국 - 막창 가득, 잡내 ZERO'
 description: '경기 파주시 금촌동 파주순대국. 막창이 그릇 가득 들어간 막창순대국(12,000원)이 대표 메뉴! 구수한 사골 육수와 쫄깃한 막창의 조화, 주차 가능'
 pubDate: 'Aug 02 2026'
-heroImage: '../../assets/food-guide-hero.jpg'
+heroImage: '../../assets/paju-sundae.jpg'
 tags: ['잇슐랭가이드', '파주맛집', '금촌역맛집', '파주순대국', '막창순대국']
 status: 'approved'
 ---

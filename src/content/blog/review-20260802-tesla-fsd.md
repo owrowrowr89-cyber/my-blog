@@ -2,7 +2,7 @@
 title: '테슬라 FSD 한국 8월 구독제🔥 모델3/Y HW3도 가능? v14 Lite 총정리'
 description: '테슬라 FSD v14 Lite 한국 출시! 미국산 모델3/Y 지원, HW3 차량도 가능. 8월 월 구독제 전환 예상 가격과 지원 차종 총정리'
 pubDate: 'Aug 02 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: '../../assets/tesla-fsd-hero.jpg'
 tags: ['테슬라', 'FSD', '자율주행', '모델3', '전기차']
 status: 'approved'
 ---
