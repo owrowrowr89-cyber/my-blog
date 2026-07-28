@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { category } = Astro.props;
-const base = '';
+const base = '/my-blog';
 const allPosts = await getCollection('blog');
 const filteredPosts = allPosts.filter(post => {
 	const content = (post.data.title + ' ' + post.data.description).toLowerCase();
