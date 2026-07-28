@@ -15,10 +15,10 @@ const posts = (await getCollection('blog')).sort(
 const recentPosts = posts.slice(0, 6);
 
 const categoryPosts = {
-	it: posts.filter(p => p.data.tags?.some(t => ['에어팟','아이폰','갤럭시','맥북','테슬라'].some(kt => t.toLowerCase().includes(kt.toLowerCase())))).slice(0, 3),
-	food: posts.filter(p => p.data.tags?.some(t => t.includes('잇슐랭') || t.includes('맛집') || t.includes('곱창'))).slice(0, 3),
-	health: posts.filter(p => p.data.tags?.some(t => ['마운자로','위고비','Mounjaro','체중감량'].some(kt => t.toLowerCase().includes(kt.toLowerCase())))).slice(0, 3),
-	edu: posts.filter(p => p.data.tags?.some(t => ['교육','초등','수학','학습'].some(kt => t.includes(kt)))).slice(0, 3),
+	it: posts.filter(p => (p.data.title + ' ' + p.data.description).toLowerCase().includes('테슬라') || (p.data.title + ' ' + p.data.description).toLowerCase().includes('아이폰') || (p.data.title + ' ' + p.data.description).toLowerCase().includes('갤럭시') || (p.data.title + ' ' + p.data.description).toLowerCase().includes('맥북') || (p.data.title + ' ' + p.data.description).toLowerCase().includes('에어팟')).slice(0, 3),
+	food: posts.filter(p => (p.data.tags?.some(t => t.includes('잇슐랭') || t.includes('맛집') || t.includes('곱창')) || p.data.title.includes('맛집'))).slice(0, 3),
+	health: posts.filter(p => (p.data.title + ' ' + (p.data.description || '')).toLowerCase().includes('마운자로') || (p.data.title + ' ' + (p.data.description || '')).toLowerCase().includes('위고비')).slice(0, 3),
+	edu: posts.filter(p => (p.data.title + ' ' + (p.data.description || '')).toLowerCase().includes('교육') || (p.data.title + ' ' + (p.data.description || '')).toLowerCase().includes('수학')).slice(0, 3),
 };
 ---
 
