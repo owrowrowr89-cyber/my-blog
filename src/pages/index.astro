@@ -150,6 +150,8 @@ const categoryPosts = {
 	/* 카테고리 섹션 */
 	.cat-section { margin: 2em 0; }
 	.cat-post-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; }
+	.cat-post-row:has(:only-child) { grid-template-columns: 1fr; max-width: 400px; }
+	.cat-post-row:has(:nth-child(2):last-child) { grid-template-columns: repeat(2, 1fr); }
 	.cat-post-item { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--accent-light); transition: transform 0.2s; }
 	.cat-post-item:hover { transform: translateY(-2px); }
 	.cat-post-item a { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
