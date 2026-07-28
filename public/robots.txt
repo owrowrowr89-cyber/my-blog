@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://timely-halva-d3b754.netlify.app/sitemap-index.xml
